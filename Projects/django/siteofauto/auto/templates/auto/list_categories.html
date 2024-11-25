@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+
+<ul id="leftchapters">
+    {% for sed in seds %}
+        {% if sed.id == sed_selected %}
+            <li class="selected">{{sed.name}}</li>
+        {% else %}
+            <li><a href="{{ sed.get_absolute_url }}">{{sed.name}}</a></li>
+        {% endif %}
+    {% endfor %}
+
+</ul>
+
+</body>
+</html>

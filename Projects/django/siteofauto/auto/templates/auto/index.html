@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'auto/includes/nav.html' only %}
+
+<ul class="list-articles">
+ {% for p in posts %}
+ {% if p.photo %}
+ <p ><img class="img-article-left
+thumb" src="{{p.photo.url}}"></p>
+{% endif %}
+ <li><h2>{{ p.title }}</h2>
+
+ <li><div class="article-panel">
+          <p class="first">Категория: {{p.sed}}</p>
+          <p class="last">Дата: {{p.time_update|date:"dm-Y H:i:s"}}</p>
+</div>
+
+ {% autoescape off %}
+ {{ p.content|linebreaks|truncatewords:50 }}
+ {% endautoescape %}
+ <div class="clear"></div>
+ <p class="link-readpost"><a href="{{ p.get_absolute_url }}">Читать пост</a></p>
+ </li>
+ {% endfor %}
+</ul>
+
+{% endblock %}
